@@ -30,8 +30,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative text-center mb-28">
-        <Image src="/images/star.svg" width="224" height="215" alt="star icon" className="absolute right-3 top-[-80px] -z-10" />
+      <section className="relative text-center mb-28 w-fit m-auto">
+        <Image src="/images/star.svg" width="224" height="215" alt="star icon" className="absolute right-[-100px] top-[-80px] -z-10" />
         <h3 className="text-[110px] font-title mt-24 leading-none ">Mantenha seu foco voltado <br/> para sua perfomance</h3>
         <p className="text-lg mt-1.5 max-w-3xl m-auto">Se você quer ter recursos recorrentes, conquistar sustentabilidade financeira e <b>VIVER DO ESPORTE</b> do jeito que sempre quis, entre agora para o Capte Mais clicando no botão abaixo</p>
         <button className="py-6 px-14 text-primary uppercase border border-primary hover:bg-primary hover:text-white mt-9 ease-in-out duration-200">criar minha conta</button>

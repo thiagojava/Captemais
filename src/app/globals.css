@@ -19,6 +19,9 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
 
 body {
   display: flex;
@@ -46,4 +49,8 @@ main {
 .link-underline:hover {
   background-size: 100% 3px;
   background-position: 0 100%
+}
+
+input[type="file"] {
+    display: none;
 }
