@@ -14,12 +14,12 @@ export default function RootLayout({
   const pathName = usePathname();
 
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={exo.className}>
       <head>
         <title>Capte+</title>
         <link rel='icon' href='/favicon.ico' />
       </head>
-      <body className={exo.className}>
+      <body className={pathName === '/agradecimento' ? 'bg-primary' : 'bg-white' }>
         {pathName === '/' && (
           <div className="bg-[url('/images/banner.png')] bg-black bg-no-repeat bg-[center_top] min-h-[755px] block absolute -z-10 min-w-full"></div>
         )}

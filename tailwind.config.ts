@@ -11,6 +11,15 @@ const config: Config = {
       colors: {
         primary: '#194AFA',
         secondary: '#FAEB0C'
+      },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-45deg)' },
+          '50%': { transform: 'rotate(45deg)' },
+        }
+      },
+      animation: {
+        wiggle: 'wiggle 2s ease-in-out infinite',
       }
     },
     fontFamily: {
