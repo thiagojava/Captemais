@@ -13,7 +13,6 @@ export default function RootLayout({
 }) {
   const pathName = usePathname();
 
-  console.log(pathName)
   return (
     <html lang="pt-BR">
       <head>
@@ -21,7 +20,6 @@ export default function RootLayout({
         <link rel='icon' href='/favicon.ico' />
       </head>
       <body className={exo.className}>
-        {pathName === '/apoio' && (<div className="bg-[#060606] h-[1500px] w-[50%] absolute -z-10"></div>)}
         {pathName === '/' && (
           <div className="bg-[url('/images/banner.png')] bg-black bg-no-repeat bg-[center_top] min-h-[755px] block absolute -z-10 min-w-full"></div>
         )}
