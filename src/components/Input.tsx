@@ -24,7 +24,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ label, errorMess
     <div className="flex flex-col h-[125px]">
       <label htmlFor={props.id} className="flex flex-col text-[#00000099]">
         {label}
-        <input ref={ref} {...props} onChange={onChange} className={twMerge('border border-black rounded-md py-4 px-4 mt-2', errorMessage && 'border-red-500 focus:outline-red-500')} />
+        <input ref={ref} {...props} onChange={onChange} className={twMerge('border border-black rounded-md py-4 px-4 mt-2', errorMessage && 'border-red-500 outline-1 focus-visible:outline-red-500 focus:outline focus:outline-red-500')} />
       </label>
       <span className="mt-2 text-red-500 text-sm">{errorMessage}</span>
     </div>
