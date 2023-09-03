@@ -20,6 +20,7 @@ export default function RootLayout({
         <link rel='icon' href='/favicon.ico' />
       </head>
       <body className={pathName === '/agradecimento' ? 'bg-primary' : 'bg-white' }>
+        {pathName.search('/atleta') !== -1 && <div className="bg-primary block h-[136px] absolute min-w-full -z-10 top-[40px]"></div> }
         {pathName === '/' && (
           <div className="bg-[url('/images/banner.png')] bg-black bg-no-repeat bg-[center_top] min-h-[755px] block absolute -z-10 min-w-full"></div>
         )}
