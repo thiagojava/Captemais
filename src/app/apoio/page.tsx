@@ -7,19 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { twMerge } from 'tailwind-merge'
 import { cpf } from 'cpf-cnpj-validator'
 import Image from 'next/image'
-
-const MAX_FILE_SIZE = 500000;
-const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
-
-function CPFMask(v: string): string {
-  v = v.replace(/\D/g, '')
-  v = v.replace(/^(\d{3})(\d)/g, '$1.$2')
-  v = v.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3')
-  v = v.replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4')
-  v = v.replace(/^(\d{3})\.(\d{3})\.(\d{3})\/(\d{2})(\d)/, '$1.$2.$3-$4')
-  return v.substring(0, 14)
-}
-
+import { CPFMask } from '@/utils/cpfmask'
 
 const apoiarFormSchema = z.object({
   arquivo: z
@@ -32,7 +20,6 @@ const apoiarFormSchema = z.object({
   descricao: z.string().nonempty('Descricão é obrigatório.').min(5, 'Coloque uma descrição de no minímo de 5 caracteres!')
 })
 
-
 type ApoioFormData = z.infer<typeof apoiarFormSchema>
 
 export default function Apoio() {
@@ -41,7 +28,7 @@ export default function Apoio() {
     resolver: zodResolver(apoiarFormSchema)
   });
 
-  function apoiar(data: any) {
+  function apoiar(data: ApoioFormData) {
     /// FUNCAO QUE CHAMA SUBMIT DO FORM DEPOIS DE VALIDADO TUDO CERTO!
     console.log(data)
   }
@@ -50,7 +37,7 @@ export default function Apoio() {
     <div className="grid grid-cols-2 min-h-[1300px]">
       <div className="bg-[url('/images/apoio-bg.png')] bg-center bg-no-repeat bg-cover py-16 px-24">
         <div className="flex items-center">
-          <button className="p-5 bg-primary bg-[url('/images/arrow.svg')] bg-no-repeat bg-center"></button>
+          <a href="/" className="p-5 bg-primary bg-[url('/images/arrow.svg')] bg-no-repeat bg-center"></a>
           <a href="/" className="text-secondary text-base underline ml-4">Retornar</a>
         </div>
         <h1 className="text-[90px] leading-none font-title text-white mt-[167px]">Só mais esse passo para iniciarmos sua campanha de financiamento</h1>
