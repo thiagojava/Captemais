@@ -40,7 +40,7 @@ export default function Apoio() {
           <a href="/" className="p-5 bg-primary bg-[url('/images/arrow.svg')] bg-no-repeat bg-center"></a>
           <a href="/" className="text-secondary text-base underline ml-4">Retornar</a>
         </div>
-        <h1 className="text-7xl mt-8 sm:text-8xl leading-none font-title text-white sm:mt-[167px]">Só mais esse passo para iniciarmos sua campanha de financiamento</h1>
+        <h1 className="text-7xl sm:text-[90px] mt-8 sm:text-8xl leading-none font-title text-white sm:mt-[167px]">Só mais esse passo para iniciarmos sua campanha de financiamento</h1>
       </div>
 
       <section className="px-8 py-8 sm:px-24 sm:py-16">
