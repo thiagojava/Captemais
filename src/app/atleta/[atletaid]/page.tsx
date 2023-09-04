@@ -19,7 +19,7 @@ export default function Atleta({ params }: AtletaProps) {
             <span className="text-[20px] text-secondary">meucontato@email.com.br</span>
           </div>
         </div>
-        <button className="py-6 px-14 bg-secondary text-primary uppercase hover:bg-white hover:text-black ease-in-out duration-200 my-8">apoiar atleta</button>
+        <a href="/apoio" className="py-6 px-14 bg-secondary text-primary uppercase hover:bg-white hover:text-black ease-in-out duration-200 my-8">apoiar atleta</a>
       </header>
 
       <article className="mt-[60px]">
@@ -34,7 +34,7 @@ export default function Atleta({ params }: AtletaProps) {
           <p>Pellentesque arcu felis, rutrum eget convallis nec, tempor ut nunc. Sed non tortor condimentum, vulputate magna nec, interdum sem.
             Curabitur non interdum massa, eu efficitur lacus. Maecenas sagittis, diam eget facilisis vehicula, risus erat porta nisl, quis volutpat tortor ante quis enim. Suspendisse lacinia, nisl quis fermentum porttitor, augue arcu euismod magna, at dictum nisi enim vel purus. Aliquam nec nunc nulla. Pellentesque quis tortor vitae sem fermentum efficitur sed sit amet ligula. Sed nec ante vel erat sollicitudin lacinia quis non tortor. Maecenas diam arcu, ultricies ac lacus a, fringilla imperdiet dolor. Praesent sit amet feugiat ipsum. Suspendisse at lectus hendrerit, maximus elit ac, scelerisque nisi.</p>
         </div>
-        <button className="py-6 px-14 bg-secondary text-primary uppercase hover:bg-primary hover:text-secondary ease-in-out duration-200 my-8">apoiar atleta</button>
+        <a href="/apoio" className="py-6 px-14 bg-secondary text-primary uppercase hover:bg-primary hover:text-secondary ease-in-out duration-200 my-8">apoiar atleta</a>
       </article>
     </section>
   )
