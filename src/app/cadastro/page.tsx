@@ -18,7 +18,7 @@ type CadastroFormData = z.infer<typeof cadastroFormSchema>
 
 export default function Apoio() {
 
-  const { register, handleSubmit, formState: { errors }} = useForm<CadastroFormData>({
+  const { register, handleSubmit, formState: { errors } } = useForm<CadastroFormData>({
     resolver: zodResolver(cadastroFormSchema)
   });
 
@@ -29,26 +29,30 @@ export default function Apoio() {
   }
 
   return (
-    <div className="flex flex-col sm:grid sm:grid-cols-2 sm:min-h-[1300px]">
-      <div className="bg-[url('/images/apoio-bg.png')] bg-no-repeat bg-cover px-8 py-8 sm:py-16 sm:px-24">
-        <div className="flex items-center">
-          <a href="/" className="p-5 bg-primary bg-[url('/images/arrow.svg')] bg-no-repeat bg-center"></a>
-          <a href="/" className="text-secondary text-base underline ml-4">Retornar</a>
+    <main className="flex flex-col sm:grid sm:grid-cols-2">
+      <div className="bg-[url('/images/apoio-bg.png')] bg-center bg-no-repeat bg-cover">
+        <div className="px-8 py-10 sm:w-[640px] sm:py-16 sm:px-24 sm:float-right">
+          <div className="flex items-center">
+            <a href="/" className="p-5 bg-primary bg-[url('/images/arrow.svg')] bg-no-repeat bg-center"></a>
+            <a href="/" className="text-secondary text-base underline ml-4">Retornar</a>
+          </div>
+          <h1 className="text-6xl sm:text-[90px] mt-8 leading-none font-title text-white sm:mt-[167px]">Apoie um atleta de forma simples e direta</h1>
         </div>
-        <h1 className="text-7xl sm:text-[90px] mt-8 leading-none font-title text-white sm:mt-[167px]">Apoie um atleta de forma simples e direta</h1>
       </div>
 
-      <section className=" px-8 py-8 sm:px-24 sm:py-16">
-        <h2 className='text-5xl font-title'>Insira seus dados básicos</h2>
-        <p className="text-lg mt-2">Preencha corretamente os dados abaixo para que seu apoio seja cadastrado em nossa plataforma</p>
+      <section>
+        <div className="sm:w-[640px] px-8 py-8 sm:px-24 sm:py-16">
+          <h2 className='text-5xl font-title'>Insira seus dados básicos</h2>
+          <p className="text-lg mt-2">Preencha corretamente os dados abaixo para que seu apoio seja cadastrado em nossa plataforma</p>
 
-        <form onSubmit={handleSubmit(cadastrar)} className="mt-11 flex flex-col">
-          <Input {...register('nome')} label="Nome" placeholder="Preencha" type="text" id="nome" errorMessage={errors.nome && errors.nome.message} />
-          <Input {...register('cpf')} mask={CPFMask} label="CPF" type="text" placeholder="Preencha" id="cpf" errorMessage={errors.cpf && errors.cpf.message}/>
-          <Input {...register('email')} label="E-mail" type="text" placeholder="Preencha" id="email" errorMessage={errors.email && errors.email.message}/>
-          <button className="py-6 px-14 bg-primary text-secondary uppercase hover:bg-secondary hover:text-primary ease-in-out duration-200 sm:w-fit mt-9">Avançar</button>
-        </form>
+          <form onSubmit={handleSubmit(cadastrar)} className="mt-11 flex flex-col">
+            <Input {...register('nome')} label="Nome" placeholder="Preencha" type="text" id="nome" errorMessage={errors.nome && errors.nome.message} />
+            <Input {...register('cpf')} mask={CPFMask} label="CPF" type="text" placeholder="Preencha" id="cpf" errorMessage={errors.cpf && errors.cpf.message} />
+            <Input {...register('email')} label="E-mail" type="text" placeholder="Preencha" id="email" errorMessage={errors.email && errors.email.message} />
+            <button className="py-6 px-14 bg-primary text-secondary uppercase hover:bg-secondary hover:text-primary ease-in-out duration-200 sm:w-fit mt-9">Avançar</button>
+          </form>
+        </div>
       </section>
-    </div>
+    </main>
   )
 }

@@ -24,7 +24,7 @@ type ApoioFormData = z.infer<typeof apoiarFormSchema>
 
 export default function Apoio() {
   const [image, setImage] = React.useState('/images/upload.png');
-  const { register, handleSubmit, formState: { errors }} = useForm<ApoioFormData>({
+  const { register, handleSubmit, formState: { errors } } = useForm<ApoioFormData>({
     resolver: zodResolver(apoiarFormSchema)
   });
 
@@ -34,23 +34,26 @@ export default function Apoio() {
   }
 
   return (
-    <div className="flex flex-col sm:grid sm:grid-cols-2 sm:min-h-[1300px]">
-      <div className="bg-[url('/images/apoio-bg.png')] bg-center bg-no-repeat bg-cover px-8 py-10 sm:py-16 sm:px-24">
-        <div className="flex items-center">
-          <a href="/" className="p-5 bg-primary bg-[url('/images/arrow.svg')] bg-no-repeat bg-center"></a>
-          <a href="/" className="text-secondary text-base underline ml-4">Retornar</a>
+    <main className="flex flex-col sm:grid sm:grid-cols-2 ">
+      <div className="bg-[url('/images/apoio-bg.png')] bg-center bg-no-repeat bg-cover">
+        <div className="px-8 py-10 sm:w-[640px] sm:py-16 sm:px-24 sm:float-right">
+          <div className="flex items-center">
+            <a href="/" className="p-5 bg-primary bg-[url('/images/arrow.svg')] bg-no-repeat bg-center"></a>
+            <a href="/" className="text-secondary text-base underline ml-4">Retornar</a>
+          </div>
+          <h1 className="text-6xl sm:text-[90px] mt-8 sm:text-8xl leading-none font-title text-white sm:mt-[167px]">Só mais esse passo para iniciarmos sua campanha de financiamento</h1>
         </div>
-        <h1 className="text-7xl sm:text-[90px] mt-8 sm:text-8xl leading-none font-title text-white sm:mt-[167px]">Só mais esse passo para iniciarmos sua campanha de financiamento</h1>
       </div>
 
-      <section className="px-8 py-8 sm:px-24 sm:py-16">
+      <section>
+        <div className="sm:w-[640px] px-8 py-8 sm:px-24 sm:py-16">
         <h2 className='text-5xl font-title'>Insira seus dados de contato</h2>
         <p className="text-lg mt-2">Preencha corretamente os dados abaixo para que sua<br /> página de apoio seja iniciada.</p>
 
         <form onSubmit={handleSubmit(apoiar)} className="mt-11 flex flex-col">
           <div className="text-[#00000099] flex gap-5 items-center mb-8">
             <label htmlFor="arquivo" className="block border border-black w-[116px] h-[116px] cursor-pointer bg-center flex-shrink-0">
-            <Image src={image} width={116} height={116} alt="minha imagem" /> 
+              <Image src={image} width={116} height={116} alt="minha imagem" />
               <input {...register('arquivo')} onChange={(e) => e.target.files && setImage(URL.createObjectURL(e.target.files[0]))} id="arquivo" type="file" />
             </label>
             Clique no quadrado ao lado para inserir uma foto da organização ou atleta beneficiado
@@ -72,7 +75,8 @@ export default function Apoio() {
 
           <a href="" className="py-6 px-14 bg-primary text-secondary uppercase hover:bg-secondary hover:text-primary ease-in-out duration-200 text-center sm:w-fit mt-9">Criar meu financiamento</a>
         </form>
+        </div>
       </section>
-    </div>
+    </main>
   )
 }

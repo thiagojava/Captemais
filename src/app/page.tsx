@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Home() {
   return (
-    <React.Fragment>
+     <main className="container max-w-7xl m-auto">
       <header className="flex flex-col items-center md:flex-row justify-between pt-6">
         <Image src="/images/logo.svg" width="132" height="57" alt="capte+ logo" />
         <nav className="flex flex-col gap-5 mt-8 sm:flex-row sm:gap-[76px] items-center text-white">
@@ -36,6 +36,6 @@ export default function Home() {
         <p className="text-lg mt-1.5 max-w-3xl m-auto">Se você quer ter recursos recorrentes, conquistar sustentabilidade financeira e <b>VIVER DO ESPORTE</b> do jeito que sempre quis, entre agora para o Capte Mais clicando no botão abaixo</p>
         <a href="/cadastro" className="py-6 px-14 text-primary uppercase border border-primary hover:bg-primary hover:text-white mt-9 ease-in-out duration-200 block w-fit m-auto">criar minha conta</a>
       </section>
-    </React.Fragment>
+    </main>
   )
 }
