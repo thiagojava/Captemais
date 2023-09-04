@@ -34,16 +34,16 @@ export default function Apoio() {
   }
 
   return (
-    <div className="grid grid-cols-2 min-h-[1300px]">
-      <div className="bg-[url('/images/apoio-bg.png')] bg-center bg-no-repeat bg-cover py-16 px-24">
+    <div className="flex flex-col sm:grid sm:grid-cols-2 sm:min-h-[1300px]">
+      <div className="bg-[url('/images/apoio-bg.png')] bg-center bg-no-repeat bg-cover px-8 py-10 sm:py-16 sm:px-24">
         <div className="flex items-center">
           <a href="/" className="p-5 bg-primary bg-[url('/images/arrow.svg')] bg-no-repeat bg-center"></a>
           <a href="/" className="text-secondary text-base underline ml-4">Retornar</a>
         </div>
-        <h1 className="text-[90px] leading-none font-title text-white mt-[167px]">Só mais esse passo para iniciarmos sua campanha de financiamento</h1>
+        <h1 className="text-7xl mt-8 sm:text-8xl leading-none font-title text-white sm:mt-[167px]">Só mais esse passo para iniciarmos sua campanha de financiamento</h1>
       </div>
 
-      <section className="px-24 py-16">
+      <section className="px-8 py-8 sm:px-24 sm:py-16">
         <h2 className='text-5xl font-title'>Insira seus dados de contato</h2>
         <p className="text-lg mt-2">Preencha corretamente os dados abaixo para que sua<br /> página de apoio seja iniciada.</p>
 
@@ -70,7 +70,7 @@ export default function Apoio() {
             <span className="mt-2 text-red-500 text-sm">{errors.descricao && errors.descricao.message}</span>
           </div>
 
-          <button className="py-6 px-14 bg-primary text-secondary uppercase hover:bg-secondary hover:text-primary ease-in-out duration-200 w-fit mt-9">Criar meu financiamento</button>
+          <a href="" className="py-6 px-14 bg-primary text-secondary uppercase hover:bg-secondary hover:text-primary ease-in-out duration-200 text-center sm:w-fit mt-9">Criar meu financiamento</a>
         </form>
       </section>
     </div>
