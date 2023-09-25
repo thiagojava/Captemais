@@ -1,14 +1,14 @@
+
 import React from 'react'
 import Image from 'next/image'
-
 export default function Agradecimento() {
   return (
         <main className="container max-w-7xl m-auto">
     <div className="flex h-screen items-center justify-center bg-primary flex-col px-8 sm:px-0 text-center">
 
       <div className="relative sm:mt-24 w-[200px] sm:w-[300px] sm:h-[300px] h-[200px]">
-        <Image src="images/star-outline.png" fill alt="imagem de estrelas" className="absolulte animate-wiggle" />
-        <Image src="images/trofeu.png" fill alt="imagem de trofeus" className="absolute top-0 animate-bounce" />
+        <Image src="/images/star-outline.png" fill alt="imagem de estrelas" className="absolulte animate-wiggle" />
+        <Image src="/images/trofeu.png" fill alt="imagem de trofeus" className="absolute top-0 animate-bounce" />
       </div>
 
       <h1 className="font-title text-7xl sm:text-[110px] text-white leading-none mt-7">Obrigado pelo apoio!!</h1>

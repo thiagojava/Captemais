@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Campanha {
+  id                       String   @id @default(uuid())
+  imageUrl                 String
+  nomeAtleta               String
+  cpf                      String
+  email                    String
+  tipoChave                String
+  chavePix                 String
+  cargoAtleta              String
+  telefoneAtleta           String
+  nomeProjeto              String
+  numeroProcesso           String
+  manifestacaoDesportiva   String
+  dataPublicacaoDOU        DateTime
+  projetoProponente        String
+  projetoCNPJ              String
+  descricaoProjeto         String
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+}
+
+model CadastroApoio {
+  id                    String   @id @default(uuid())
+  nome                  String
+  cpfOrCnpj             String
+  endereco              String
+  cidade                String
+  UF                    String
+  CEP                   String
+  telefone              String
+  email                 String
+  valorIncentivo        String
+  cnpj                  String?
+  nomeFantasia          String?
+  razaoSocial           String?
+  nomeDirigenteMax      String?
+  telefoneDirigente     String?
+  emailDirigente        String?
+  empresaPublicOrPrivate String?
+  grupoEmpresarial      String?
+  areaResponsavel       String?
+  telefoneAreaResponsavel String?
+  emailAreaResponsavel  String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
+
+

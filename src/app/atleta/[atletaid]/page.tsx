@@ -1,43 +1,77 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
+
+import prismadb from "@/utils/prismadb";
+
 type AtletaProps = {
   params: {
-    atletaid: string
-  }
-}
+    atletaid: string;
+  };
+};
 
-export default function Atleta({ params }: AtletaProps) {
-  const { atletaid } = params
+const Atleta = async ({ params }: AtletaProps) => {
+  const { atletaid } = params;
+  console.log("atletaid ", atletaid);
+
+  const response = await prismadb.campanha.findUnique({
+    where: {
+      id: params.atletaid,
+    },
+  });
+  console.log("respaaonse ", response);
+  const srcNavigation = `/cadastro/${response?.id}`
   return (
     <main className="container max-w-7xl m-auto">
       <section>
         <header className="flex flex-col sm:flex-row items-center sm:justify-around bg-primary mt-[40px] sm:h-[136px] relative pt-10 sm:pt-0 px-4 sm:px-0">
-          <Image src="/images/estrela-branca.svg" width="168" height="163" alt="estrela branca" className="absolute hidden sm:block left-[-70px]" />
+          <Image
+            src="/images/estrela-branca.svg"
+            width="168"
+            height="163"
+            alt="estrela branca"
+            className="absolute hidden sm:block left-[-70px]"
+          />
           <div className="flex items-center">
-            <Image src='/images/atleta.png' width="102" height="102" alt="imagem do atleta" />
+            <Image
+              src={response?.imageUrl || ""}
+              width="102"
+              height="102"
+              alt="imagem do atleta"
+              className="rounded-full"
+            />
             <div className="ml-7">
-              <h1 className="font-title text-5xl text-white">Vanessa dos santos</h1>
-              <span className="text-[20px] text-secondary">meucontato@email.com.br</span>
+              <h1 className="font-title text-5xl text-white">
+                {response?.nomeAtleta}
+              </h1>
+              <span className="text-[20px] text-secondary">
+                {response?.email}
+              </span>
             </div>
           </div>
-          <a href="/apoio" className="py-6 px-14 bg-secondary text-primary uppercase hover:bg-white hover:text-black ease-in-out duration-200 my-8">apoiar atleta</a>
+          <a
+            href={srcNavigation}
+            className="py-6 px-14 bg-secondary text-primary uppercase hover:bg-white hover:text-black ease-in-out duration-200 my-8"
+          >
+            apoiar atleta
+          </a>
         </header>
 
         <article className="mt-16 px-8 sm:px-0 sm:mt-[60px]">
-          <h2 className="font-title text-5xl sm:text-[64px] mb-4 sm:mb-0">Projeto vanessa competindo profissionalmente</h2>
+          <h2 className="font-title text-5xl sm:text-[64px] mb-4 sm:mb-0">
+            {response?.nomeProjeto}
+          </h2>
           <div className="text-lg">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac tellus sed dolor pretium dictum. Vivamus vel feugiat metus. Nulla eu elit ante. Vivamus egestas arcu ex, vitae tempor est auctor in. Nunc dignissim, massa non pharetra sollicitudin, quam libero mattis erat, sit amet pharetra elit urna quis mauris. Sed sagittis, felis sit amet facilisis iaculis, velit enim porta metus, ut dapibus ipsum tellus ut massa. </p>
-            <br />
-            <p>Pellentesque arcu felis, rutrum eget convallis nec, tempor ut nunc. Sed non tortor condimentum, vulputate magna nec, interdum sem.
-              Curabitur non interdum massa, eu efficitur lacus. Maecenas sagittis, diam eget facilisis vehicula, risus erat porta nisl, quis volutpat tortor ante quis enim. Suspendisse lacinia, nisl quis fermentum porttitor, augue arcu euismod magna, at dictum nisi enim vel purus. Aliquam nec nunc nulla. Pellentesque quis tortor vitae sem fermentum efficitur sed sit amet ligula. Sed nec ante vel erat sollicitudin lacinia quis non tortor. Maecenas diam arcu, ultricies ac lacus a, fringilla imperdiet dolor. Praesent sit amet feugiat ipsum. Suspendisse at lectus hendrerit, maximus elit ac, scelerisque nisi. Duis lectus risus, pretium et magna a, rhoncus tempus mi. Donec et nisl a leo sodales blandit. Aenean accumsan vel augue vel iaculis. Mauris nulla odio, ornare eu nisl eu, pulvinar fringilla augue. Donec maximus ante quam, et condimentum augue vestibulum sit amet. Duis sit amet ullamcorper justo.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac tellus sed dolor pretium dictum. Vivamus vel feugiat metus. Nulla eu elit ante. Vivamus egestas arcu ex, vitae tempor est auctor in. Nunc dignissim, massa non pharetra sollicitudin, quam libero mattis erat, sit amet pharetra elit urna quis mauris. Sed sagittis, felis sit amet facilisis iaculis, velit enim porta metus, ut dapibus ipsum tellus ut massa. </p>
-            <br />
-            <p>Pellentesque arcu felis, rutrum eget convallis nec, tempor ut nunc. Sed non tortor condimentum, vulputate magna nec, interdum sem.
-              Curabitur non interdum massa, eu efficitur lacus. Maecenas sagittis, diam eget facilisis vehicula, risus erat porta nisl, quis volutpat tortor ante quis enim. Suspendisse lacinia, nisl quis fermentum porttitor, augue arcu euismod magna, at dictum nisi enim vel purus. Aliquam nec nunc nulla. Pellentesque quis tortor vitae sem fermentum efficitur sed sit amet ligula. Sed nec ante vel erat sollicitudin lacinia quis non tortor. Maecenas diam arcu, ultricies ac lacus a, fringilla imperdiet dolor. Praesent sit amet feugiat ipsum. Suspendisse at lectus hendrerit, maximus elit ac, scelerisque nisi.</p>
+            <p>{response?.descricaoProjeto}</p>
           </div>
-          <a href="/apoio" className="block text-center sm-w-fit py-6 px-14 bg-secondary text-primary uppercase hover:bg-primary hover:text-secondary ease-in-out duration-200 my-8">apoiar atleta</a>
+          <a
+            href={srcNavigation}
+            className="block text-center sm-w-fit py-6 px-14 bg-secondary text-primary uppercase hover:bg-primary hover:text-secondary ease-in-out duration-200 my-8"
+          >
+            apoiar atleta
+          </a>
         </article>
       </section>
     </main>
-  )
-}
+  );
+};
+export default Atleta;
