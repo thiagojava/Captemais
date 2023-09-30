@@ -7,61 +7,89 @@ export async function GET() {
 
     return NextResponse.json(campanha);
   } catch (error) {
-    console.log('[STORES_GET]', error);
+    console.log("[STORES_GET]", error);
     return new NextResponse("Internal error", { status: 500 });
   }
-};
-export async function POST(
-  req: Request,
-) {
+}
+export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const { 
-      nomeAtleta, 
-      cpf, 
+    const {
+      nomeAtleta,
+      cpf,
       email,
-      tipoChave, 
-      chavePix, 
-      cargoAtleta, 
-      telefoneAtleta, 
-      nomeProjeto, 
-      numeroProcesso, 
-      manifestacaoDesportiva, 
-      dataPublicacaoDOU, 
-      projetoProponente, 
-      projetoCNPJ, 
-      descricaoProjeto, 
-      imageUrl 
+      tipoChave,
+      chavePix,
+      cargoAtleta,
+      telefoneAtleta,
+      nomeProjeto,
+      numeroProcesso,
+      manifestacaoDesportiva,
+      dataPublicacaoDOU,
+      projetoProponente,
+      projetoCNPJ,
+      descricaoProjeto,
+      cidade,
+      banco,
+      numeroAgencia,
+      numeroContaCorrente,
+      imageUrl,
     } = body;
 
-    if (!nomeAtleta || !cpf || !email || !chavePix || !tipoChave || !nomeProjeto || !descricaoProjeto || !imageUrl || !cargoAtleta || !telefoneAtleta || !numeroProcesso || !manifestacaoDesportiva || !dataPublicacaoDOU || !projetoProponente || !projetoCNPJ) {
-      return new NextResponse("Algum campo não preenchido is required", { status: 400 });
+    if (
+      !nomeAtleta ||
+      !cpf ||
+      !email ||
+      !chavePix ||
+      !tipoChave ||
+      !nomeProjeto ||
+      !descricaoProjeto ||
+      !imageUrl ||
+      !cargoAtleta ||
+      !telefoneAtleta ||
+      !numeroProcesso ||
+      !manifestacaoDesportiva ||
+      !dataPublicacaoDOU ||
+      !projetoProponente ||
+      !projetoCNPJ ||
+      !cidade ||
+      !banco ||
+      !numeroAgencia ||
+      !numeroContaCorrente 
+    ) {
+      return new NextResponse("Algum campo não preenchido is required", {
+        status: 400,
+      });
     }
 
     const store = await prismadb.campanha.create({
       data: {
-        nomeAtleta, 
-        cpf, 
+        nomeAtleta,
+        cpf,
         email,
-        tipoChave, 
-        chavePix, 
-        cargoAtleta, 
-        telefoneAtleta, 
-        nomeProjeto, 
-        numeroProcesso, 
-        manifestacaoDesportiva, 
-        dataPublicacaoDOU, 
-        projetoProponente, 
-        projetoCNPJ, 
-        descricaoProjeto, 
-        imageUrl
-      }
+        tipoChave,
+        chavePix,
+        cargoAtleta,
+        cidade,
+        telefoneAtleta,
+        nomeProjeto,
+        numeroProcesso,
+        manifestacaoDesportiva,
+        dataPublicacaoDOU,
+        projetoProponente,
+        projetoCNPJ,
+        descricaoProjeto,
+        imageUrl,
+        banco,
+        numeroAgencia,
+        numeroContaCorrente,
+      },
     });
-  
+
     return NextResponse.json(store);
   } catch (error) {
-    console.log('[STORES_POST]', error);
+    console.log("[STORES_POST]", error);
     return new NextResponse("Internal error", { status: 500 });
   }
-};
+}
