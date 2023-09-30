@@ -16,25 +16,25 @@ const AgradecimentoClient = ({ response, response2 }: any) => {
   console.log("response ", response);
   const [brCodeString, setBrCodeString] = useState('');
 
-  const run = async () => {
-    const brCode = new PixBrCode({
-        pixKey: response?.chavePix,
-        additionalInfo: "PIX",
-        merchantName: response?.nomeAtleta,
-        merchantCity: "Curitiba",
-        postalCode: "81450220",
-        transactionAmount: response2?.valorIncentivo,
-        referenceLabel: "foo123bar"
-    });
-
-    const generatedString = brCode.get();
-    setBrCodeString(generatedString);
-    console.log("Generated BR Code:", generatedString);
-  }
-
   useEffect(() => {
+    const run = async () => {
+        const brCode = new PixBrCode({
+            pixKey: response?.chavePix,
+            additionalInfo: "PIX",
+            merchantName: response?.nomeAtleta,
+            merchantCity: "Curitiba",
+            postalCode: "81450220",
+            transactionAmount: response2?.valorIncentivo,
+            referenceLabel: "foo123bar"
+        });
+
+        const generatedString = brCode.get();
+        setBrCodeString(generatedString);
+        console.log("Generated BR Code:", generatedString);
+    }
+
     run();
-  }, [response, response2]);
+}, [response, response2]);
 
 
   const generatePDF = (incentivador: any, beneficiado: any) => {
